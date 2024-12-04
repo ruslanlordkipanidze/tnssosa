@@ -1,190 +1,107 @@
 import styled from 'styled-components';
+import FeatureBlock from './FeatureBlock';
 
-// Широкая карточка для информационного контента
-const WideCard = styled.div`
-  background: #1a1a1a;
+const Card = styled.div`
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
   border-radius: 15px;
   padding: 2rem;
-  margin: 1rem 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  transform: translateY(0);
-  opacity: 1;
-  transition: all 0.5s ease-in-out;
-
-  &:hover {
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
-  }
+  margin-bottom: 2rem;
+  border: 2.5px solid #000;
 `;
 
-// Заголовок секции
-const SectionTitle = styled.h2`
-  color: #646cff;
-  font-size: 1.8rem;
+const CardTitle = styled.h2`
+  color: #000;
+  font-size: 2em;
   margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  font-weight: 800;
 `;
 
-// Контейнер для списка преимуществ
-const FeaturesList = styled.ul`
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
+const CardDescription = styled.p`
+  color: #000;
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  font-weight: 600;
 `;
 
-// Элемент списка преимуществ
-const FeatureItem = styled.li`
-  padding: 1rem;
-  background: rgba(100, 108, 255, 0.1);
-  border-radius: 8px;
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-    background: rgba(100, 108, 255, 0.2);
-  }
-`;
-const CategoryTag = styled.span`
-  background: rgba(100, 108, 255, 0.1);
-  color: #646cff;
-  padding: 0.3em 0.8em;
-  border-radius: 4px;
-  font-size: 0.9em;
-  margin-top: 0.5rem; // Изменили margin-bottom на margin-top
-  display: inline-block; // Добавили для лучшего позиционирования
-`;
-// Контейнер для DEX кнопок с улучшенной адаптивностью
-const DexButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin: 1rem 0;
-  flex-wrap: wrap;
-  width: 100%;
-  padding: 0 1rem;
-  box-sizing: border-box;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-`;
-
-// Стилизованная кнопка DEX с улучшенной адаптивностью
-const DexButton = styled.a`
-  background: rgba(255, 0, 0, 0.2);
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  font-size: 1.1rem;
-  border: 1px solid rgba(255, 0, 0, 0.3);
-  width: 180px;
-  text-align: center;
-  box-sizing: border-box;
-
-  &:hover {
-    background: rgba(255, 0, 0, 0.3);
-    transform: translateY(-3px);
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    max-width: 280px;
-    padding: 0.7rem 1rem;
-    font-size: 1rem;
-  }
-`;
-
-// Увеличенный текст описания
-const Description = styled.p`
-  font-size: 1.3rem;
-  text-align: center;
-  margin: 1rem 0;
-`;
-
-// Контейнер для Telegram кнопок с улучшенной адаптивностью
-const TelegramButtonsContainer = styled.div`
+const FeaturesContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.8rem;
-  margin: 1rem 0;
-  width: 100%;
-  padding: 0 1rem;
-  box-sizing: border-box;
+  gap: 0.5rem;
 `;
 
-// Стилизованная кнопка Telegram с улучшенной адаптивностью
-const TelegramButton = styled.a`
-  background: rgba(100, 108, 255, 0.2);
-  color: white;
-  padding: 0.8rem 1.5rem;
+const ButtonsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+`;
+
+const ActionButton = styled.a`
+  background: rgba(0, 0, 0, 0.3);
+  color: #000;
+  padding: 1em 2em;
   border-radius: 8px;
   text-decoration: none;
-  transition: all 0.3s ease;
+  font-weight: 500;
+  min-width: 200px;
   text-align: center;
-  border: 1px solid rgba(100, 108, 255, 0.3);
-  width: 100%;
-  max-width: 280px;
-  box-sizing: border-box;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
 
   &:hover {
-    background: rgba(100, 108, 255, 0.3);
-    transform: translateY(-3px);
-  }
-
-  @media (max-width: 768px) {
-    padding: 0.7rem 1rem;
-    font-size: 0.9rem;
+    transform: translateY(-2px);
+    background: rgba(0, 0, 0, 0.4);
+    border-color: #000;
   }
 `;
 
-const InfoCard = ({ title, features, description, category, isDex, isTelegram }) => {
+const InfoCard = ({ title, description, features, isDex, isTelegram }) => {
   return (
-    <WideCard data-category={category}>
-      <SectionTitle>{title}</SectionTitle>
-      <CategoryTag>{category}</CategoryTag>
+    <Card>
+      <CardTitle>{title}</CardTitle>
+      <CardDescription>{description}</CardDescription>
       
+      <FeaturesContainer>
+        {features.map((feature, index) => (
+          <FeatureBlock
+            key={index}
+            title={feature.title}
+            description={feature.description}
+          />
+        ))}
+      </FeaturesContainer>
+
       {isDex && (
-        <DexButtonsContainer>
-          <DexButton href="https://dedust.io" target="_blank" rel="noopener noreferrer">
+        <ButtonsContainer>
+          <ActionButton href="https://dedust.io" target="_blank">
             DeDust.io
-          </DexButton>
-          <DexButton href="https://ston.fi" target="_blank" rel="noopener noreferrer">
+          </ActionButton>
+          <ActionButton href="https://ston.fi" target="_blank">
             Ston.Fi
-          </DexButton>
-        </DexButtonsContainer>
+          </ActionButton>
+        </ButtonsContainer>
       )}
 
       {isTelegram && (
-        <TelegramButtonsContainer>
-          <TelegramButton href="https://t.me/settleton_bot" target="_blank" rel="noopener noreferrer">
-            @settleton_bot
-          </TelegramButton>
-          <TelegramButton href="https://t.me/BroContestsBot" target="_blank" rel="noopener noreferrer">
+        <ButtonsContainer>
+          <ActionButton variant="telegram" href="https://t.me/tbook_incentive_bot" target="_blank">
+            @tbook_incentive_bot
+          </ActionButton>
+          <ActionButton variant="telegram" href="https://t.me/BroContestsBot" target="_blank">
             @BroContestsBot
-          </TelegramButton>
-          <TelegramButton href="https://t.me/theontonbot" target="_blank" rel="noopener noreferrer">
+          </ActionButton>
+          <ActionButton variant="telegram" href="https://t.me/theontonbot" target="_blank">
             @theontonbot
-          </TelegramButton>
-        </TelegramButtonsContainer>
+          </ActionButton>
+        </ButtonsContainer>
       )}
-      
-      <Description>{description}</Description>
-      
-      <FeaturesList>
-        {features.map((feature, index) => (
-          <FeatureItem key={index}>{feature}</FeatureItem>
-        ))}
-      </FeaturesList>
-    </WideCard>
+    </Card>
   );
 };
 

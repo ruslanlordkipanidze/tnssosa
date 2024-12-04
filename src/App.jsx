@@ -1,14 +1,16 @@
-import { BrowserRouter } from 'react-router-dom';
-import GlobalStyles from './styles/GlobalStyle';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import Home from './pages/Home';
 
-function App() {
+const App = () => {
   return (
-    <BrowserRouter>
-      <GlobalStyles />
-      <Home />
-    </BrowserRouter>
+    <ErrorBoundary>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </ErrorBoundary>
   );
-}
+};
 
 export default App;
